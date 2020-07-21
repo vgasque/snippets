@@ -1,3 +1,8 @@
+import numpy as np
+import pandas as pd
+import matplotplib.pyplot as plt
+from seaborn import hls_palette, color_palette
+
 def plt_scatter2d(df, ax=None,s=1, alpha=1,
                   color=None, cmap=None, palette=None, color_order=None,
                   label_prefix=None, xylabels=None, title=None,
@@ -27,9 +32,9 @@ def plt_scatter2d(df, ax=None,s=1, alpha=1,
             if cmap is None :
                 color_order = np.unique(color) if color_order is None else color_order
                 if palette is None :
-                    palette = sns.hls_palette(len(color_order))
+                    palette = hls_palette(len(color_order))
                 else : 
-                    palette = sns.color_palette(palette, len(color_order))
+                    palette = color_palette(palette, len(color_order))
                 cmap = dict(zip(color_order,palette))
                 
                 if not replace_colors is None :
